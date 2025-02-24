@@ -1,0 +1,6 @@
+FROM drud/ddev-webserver:latest
+# Install Shibboleth Service Provider packages (adjust package names/commands as needed)
+RUN apt-get update && apt-get install -y shibboleth-sp2-common libapache2-mod-shib2
+# Copy custom Shibboleth configuration files into the container
+COPY shibboleth2.xml /etc/shibboleth/shibboleth2.xml
+COPY attribute-map.xml /etc/shibboleth/attribute-map.xml

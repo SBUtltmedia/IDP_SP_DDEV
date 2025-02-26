@@ -12,8 +12,18 @@
 # Start from the default DDEV web image
 FROM ddev/ddev-webserver:latest
 
-# Add the Garr mirror APT sources
-RUN bash -c 'cat > /etc/apt/sources.list.d/garr.sources <<EOF
+# RUN adduser --disabled-password --gecos "" --uid 501 ddevuser \
+#     && echo "ddevuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+# USER root
+
+RUN adduser --disabled-password --gecos "" --uid 501 ddevuser \
+    && echo "ddevuser ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+# RUN sudo su
+    
+
+RUN <<'EOF'
+cat > /etc/apt/sources.list.d/garr.sources <<'EOL'
 Types: deb deb-src
 URIs: https://debian.mirror.garr.it/debian/
 Suites: bookworm bookworm-updates bookworm-backports
@@ -23,7 +33,13 @@ Types: deb deb-src
 URIs: https://debian.mirror.garr.it/debian-security/
 Suites: bookworm-security
 Components: main
-EOF'
+EOL
+EOF
 
-# Update the package list (optional, but recommended)
 RUN apt-get update -y
+
+RUN apt-get install -y libapache2-mod-shib 
+
+# Replace the default shibboleth2.xml with your custom configuration.
+# This copies the file "shibboleth2.xml" from your build context into the container.
+# COPY shibboleth2.xml /etc/shibboleth/shibboleth2.xml

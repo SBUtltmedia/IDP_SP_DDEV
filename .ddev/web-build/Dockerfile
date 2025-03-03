@@ -23,6 +23,5 @@ RUN apt-get update -y
 
 RUN apt-get install -y libapache2-mod-shib 
 
-# Replace the default shibboleth2.xml with your custom configuration.
 # This copies the file "shibboleth2.xml" from your build context into the container.
 # COPY shibboleth2.xml /etc/shibboleth/shibboleth2.xml

@@ -19,9 +19,9 @@ Components: main
 EOL
 EOF
 
-RUN apt-get update -y
-
-RUN apt-get install -y libapache2-mod-shib 
+RUN apt-get update -y && apt-get install -y libapache2-mod-shib 
 
 # This copies the file "shibboleth2.xml" from your build context into the container.
-# COPY shibboleth2.xml /etc/shibboleth/shibboleth2.xml
+COPY shibboleth2.xml /etc/shibboleth/shibboleth2.xml
+
+CMD ["apachectl", "-D", "FOREGROUND"]

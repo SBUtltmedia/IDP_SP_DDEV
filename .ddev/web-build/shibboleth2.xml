@@ -6,7 +6,7 @@
 		<!-- Controls session lifetimes, address checks, cookie handling, and the protocol handlers. Each Application has an effectively unique handlerURL, which defaults to "/Shibboleth.sso" and should be a relative path, with the SP computing the full value based on the virtual host. Use of TLS is now assumed because browsers are enforcing it due to SameSite restrictions. Note that while we default checkAddress to "false", this makes an assertion stolen in transit easier for attackers to misuse. -->
 		<Sessions lifetime="28800" timeout="3600" relayState="ss:mem" checkAddress="false" handlerSSL="true" cookieProps="https" redirectLimit="exact">
 			<!-- Configures SSO for a default IdP. To properly allow for >1 IdP, remove entityID property and adjust discoveryURL to point to discovery service. You can also override entityID on /Login query string, or in RequestMap/htaccess. -->
-			<SSO entityID="http://localhost:4000/api/saml/sso" discoveryProtocol="SAMLDS" discoveryURL="https://ds.example.org/DS/WAYF">
+			<SSO entityID="http://ddev-mocksaml:4000/shibboleth" discoveryProtocol="SAMLDS" discoveryURL="https://ds.example.org/DS/WAYF">
 				SAML2
 			</SSO>
 			<!-- SAML and local-only logout. -->
@@ -27,7 +27,10 @@
 		<!-- Allows overriding of error template information/filenames. You can also add your own attributes with values that can be plugged into the templates, e.g., helpLocation below. -->
 		<Errors supportContact="root@localhost" helpLocation="/about.html" styleSheet="/shibboleth-sp/main.css" />
 		<!-- Example of locally maintained metadata. -->
-		<!-- <MetadataProvider type="XML" validate="true" path="partner-metadata.xml"/> -->
+		<!-- <MetadataProvider type="XML" validate="true" path="partner-metadata.xml" /> -->
+		<MetadataProvider type="XML" validate="true" url="http://ddev-mocksaml:4000/api/saml/metadata" backingFilePath="idp-metadata.xml" maxRefreshDelay="7200">
+			<!-- <MetadataFilter type="RequireValidUntil" maxValidityInterval="600" /> -->
+		</MetadataProvider>
 		<!-- Example of remotely supplied batch of signed metadata. -->
 		<!-- <MetadataProvider type="XML" validate="true" url="http://federation.org/federation-metadata.xml" backingFilePath="federation-metadata.xml" maxRefreshDelay="7200"> <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/> <MetadataFilter type="Signature" certificate="fedsigner.pem" verifyBackup="false"/> <DiscoveryFilter type="Exclude" matcher="EntityAttributes" trimTags="true" attributeName="http://macedir.org/entity-category" attributeNameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri" attributeValue="http://refeds.org/category/hide-from-discovery" /> </MetadataProvider> -->
 		<!-- Example of remotely supplied "on-demand" signed metadata. -->

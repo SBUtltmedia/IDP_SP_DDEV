@@ -1,10 +1,10 @@
-<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://shibboleth.ddev.site/shibboleth">
-	<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://shibboleth.ddev.site/shibboleth" validUntil="2035-03-06T20:29:55.223Z">
+	<IDPSSODescriptor WantAuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
 		<KeyDescriptor use="signing">
-			<KeyInfo>
+			<KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
 				<X509Data>
 					<X509Certificate>
-						-----BEGIN CERTIFICATE-----
 						MIIDCTCCAfGgAwIBAgIUKUR097wUvBj04VuxkVRo20Y8b/QwDQYJKoZIhvcNAQEL
 						BQAwFDESMBAGA1UEAwwJbG9jYWxob3N0MB4XDTI1MDIxODE5MzAxMloXDTI2MDIx
 						ODE5MzAxMlowFDESMBAGA1UEAwwJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEF
@@ -22,11 +22,14 @@
 						2gDWANUZ9tlw7g3TMJzpfFDNTFDreZ/S8+FoaZiflSwyl2yubzu4pOeGKkvuX20N
 						gSixh+sId5u23QyqOrdsvmlaYX3BQ5zkhEpi1yxSk4Xr1F5KjOM8SuD0/ext0dL4
 						fkMTQlW14w36wgeyMg==
-						-----END CERTIFICATE-----
 					</X509Certificate>
 				</X509Data>
 			</KeyInfo>
 		</KeyDescriptor>
+		<NameIDFormat>
+			urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+		</NameIDFormat>
+		<SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://shibboleth.ddev.site/idp/sso" />
 		<SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://shibboleth.ddev.site/idp/sso" />
 	</IDPSSODescriptor>
 </EntityDescriptor>

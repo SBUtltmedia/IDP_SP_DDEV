@@ -1,4 +1,0 @@
-# Enable Shibboleth authentication
-AuthType Shibboleth
-ShibRequestSetting requireSession On
-Require valid-user

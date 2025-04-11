@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://shibboleth.ddev.site/shibboleth">
+	<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+		<KeyDescriptor use="signing">
+			<KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+				<X509Data>
+					<X509Certificate>
+						LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURDVENDQWZHZ0F3SUJBZ0lVS1VSMDk3d1V2QmowNFZ1eGtWUm8yMFk4Yi9Rd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0ZERVNNQkFHQTFVRUF3d0piRzlqWVd4b2IzTjBNQjRYRFRJMU1ESXhPREU1TXpBeE1sb1hEVEkyTURJeApPREU1TXpBeE1sb3dGREVTTUJBR0ExVUVBd3dKYkc5allXeG9iM04wTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGCkFBT0NBUThBTUlJQkNnS0NBUUVBMG03VkZFVStxVHdMeDd6cXU2REFhT09ZVlhVWUVnbGFGMjdkaHFMd2ZEUTkKbFNCNU9yYVBaYVQ3dkcvczA4T2tHMGZVbVpjVlppcFR6VURsRENwMHM0UktRUjBuNkw2bDNoZXdaMmxyWkNBMwpEbVRkVVRKaUNzakxBcU5vRHh2VnpNTjRYek1QSnhNcWtkcWYxWnVvcE1vRmRkVktTSEJ6dDFDZU91eHI0bzRiCmUyYmhvNVc3MnBLQ3A0QUVzVWR3clNmeC9XQmovYkVvWklyMGRTb0pGKzE5UjBCYzRLNElhS1FiRjdTRzkxeDEKSUUrSGVZYlBKT0ExQ016YVdXRkFYQVErUk9nMnRYd3U3WU9wZUtkcFFTVnYvUkNEZkpTWFlVZDZYVUtJc2ZXRwpRMXR3REpVQUY0cktrcnExalQ0SFdRZ3pYNjRwdGNuRlRlTjlzVlJkWHdJREFRQUJvMU13VVRBZEJnTlZIUTRFCkZnUVVTZENjbzJkdzViWE9mRUMxaVkyM0IyMFIvNE13SHdZRFZSMGpCQmd3Rm9BVVNkQ2NvMmR3NWJYT2ZFQzEKaVkyM0IyMFIvNE13RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFOQmdrcWhraUc5dzBCQVFzRkFBT0NBUUVBT21iNQpxOVVWckZnQUxSVlF4dFBpWXhqZzlSSmZFOUh3RVU1MmQyeUhERVdZM2RKZ3gyVXN3VVVycHRadTBZYjgyRHNjCnRUZXdmTzV0MEZySlBIeHAvdUxQY1o3aG12NThZaHplQW1oTDNtZHQxaU9BZWZXNkh4TmV2OUhKRnFzcWJOd2EKV3FpK2lFQTg5SGJlZnBtMGgzZU1NYlVQTGNlZ3YvMG1ka2hIYk9GVktsS1BnWE5tcFFtdXJZMVc2b09UWHRxVQoyZ0RXQU5VWjl0bHc3ZzNUTUp6cGZGRE5URkRyZVovUzgrRm9hWmlmbFN3eWwyeXVienU0cE9lR0trdnVYMjBOCmdTaXhoK3NJZDV1MjNReXFPcmRzdm1sYVlYM0JRNXpraEVwaTF5eFNrNFhyMUY1S2pPTThTdUQwL2V4dDBkTDQKZmtNVFFsVzE0dzM2d2dleU1nPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+					</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</KeyDescriptor>
+		<SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://ddev-mocksaml:4000/api/saml/sso" />
+		<SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="http://ddev-mocksaml:4000/api/saml/sso" />
+	</IDPSSODescriptor>
+</EntityDescriptor>

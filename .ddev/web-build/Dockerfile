@@ -27,6 +27,9 @@ COPY partner-metadata.xml /etc/shibboleth/partner-metadata.xml
 
 RUN chown -R ddevuser:ddevuser /etc/shibboleth
 
+# Copy supervisor configuration for shibd
+COPY supervisor-shibd.conf /etc/supervisor/conf.d/supervisor-shibd.conf
+
 # COPY entrypoint script and make it executable
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh

@@ -29,6 +29,4 @@ fi
 #   curl http://ddev-mocksaml:4000/api/saml/metadata -o /var/cache/shibboleth/idp-metadata.xml
 # fi
 
-service shibd start
-
 exec "$@" 

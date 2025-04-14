@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SPConfig xmlns="urn:mace:shibboleth:2.0:native:sp:config" xmlns:conf="urn:mace:shibboleth:2.0:native:sp:config" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" clockSkew="180">
-	<ApplicationDefaults entityID="https://shibbolethtest.ddev.site/shibboleth" REMOTE_USER="eppn persistent-id targeted-id" signing="true" encryption="true">
-		<Sessions lifetime="28800" timeout="3600" relayState="ss:mem" checkAddress="false" handlerSSL="true" cookieProps="https">
-			<SSO entityID="https://shibboleth.ddev.site/shibboleth">
+	<ApplicationDefaults entityID="https://shibbolethtest.ddev.site" REMOTE_USER="eppn persistent-id targeted-id" signing="true" encryption="true">
+		<Sessions lifetime="28800" timeout="3600" relayState="ss:mem" checkAddress="false" handlerSSL="false" cookieProps="https">
+			<SSO entityID="http://ddev-mocksaml:4000">
 				SAML2 SAML1
 			</SSO>
 			<Logout>

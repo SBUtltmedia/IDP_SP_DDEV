@@ -1,3 +1,29 @@
+# Enable Shibboleth authentication
 AuthType shibboleth
 ShibRequestSetting requireSession 1
-Require shib-session 
+Require shib-session
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Set debugging headers
+Header set X-Debug-Redirect "Debugging redirect"
+Header set X-Shib-Session-ID "%{Shib-Session-ID}e"
+
+# Allow access to home page without authentication
+<Files "index.php">
+    Require all granted
+</Files>
+
+# Redirect to success page after authentication
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteCond %{REQUEST_URI} !^/auth-success\.php$
+RewriteCond %{REQUEST_URI} !^/Shibboleth\.sso/
+RewriteCond %{REQUEST_URI} !^/shibboleth-sp/
+RewriteCond %{REQUEST_URI} !^/index\.php$
+RewriteRule ^(.*)$ /auth-success.php [R=302,L,QSA]
+
+# Prevent direct access to auth-success.php without authentication
+<Files "auth-success.php">
+    Require shib-session
+</Files> 
